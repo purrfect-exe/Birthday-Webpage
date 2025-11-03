@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DK+Loopet:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <title>GAME TIME!</title>
+    <style>
+        :root {
+            --primary: #64A6BD;
+            --secondary: #F4CAE0;
+            --last: #ADA7C9;
+            --tertiary: #90A8C3;
+            --txtsize: 3vw;
+            --txtsize2: 2vw;
+            --fontfam: "Winky Rough";
+        }
+        body {
+            overflow-x: hidden;
+            max-width: 100%;
+            background-color: var(--primary);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #img {
+            width: 20vw;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20vw;
+        }
+        .main {
+            display: block;
+            height: 20vw;
+            background-color: var(--tertiary);
+            width: 90%;
+            margin-left: 5%;
+        }
+        #question {
+            font-size: var(--txtsize);
+            font-family: 'Trebuchet MS', sans-serif;
+            text-align: justify;
+            padding: 2%;
+            color: var(--secondary);
+            margin-top: 5vw;
+        }
+        .answers {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 50%;
+            font-family: var(--fontfam);
+            font-size: var(--txtsize2);
+
+        }
+        .answer-block {
+            width: 40%;
+            height: 30%;
+            background-color: var(--secondary);
+            border-radius: 1vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .answer-block:hover {
+            filter: contrast(1.5);
+            transition: background-color 0.3s ease;
+        }
+        @media screen and (max-width:768px) {
+            #img {
+                width: 40vw;
+                margin-top: 30vw;
+            }
+            .main {
+                width: 90%;
+                margin-left: 5%;
+            }
+            #question {
+                font-size: 5vw;
+                margin-top: 35vw;
+                margin-bottom: 15vw;
+            }
+            .answers {
+                flex-direction: column;
+                align-items: center;
+                height: 30vw;
+                
+            }
+            .answer-block {
+                margin-bottom: 2vw;
+                width: 95%;
+                font-size: 5vw;
+                padding: 4%;
+            }
+        }
+        @media screen and (max-width: 425px) {
+            #img {
+                width: 50vw;
+                margin-top: 30vw;
+            }
+            .main {
+                width: 90%;
+                margin-left: 5%;
+            }
+            #question {
+                font-size: 6vw;
+                margin-top: 40vw;
+                margin-bottom: 15vw;
+            }
+            .answers {
+                flex-direction: column;
+                align-items: center;
+                height: 50vw;
+                
+            }
+            .answer-block {
+                width: 95%;
+                font-size: 6vw;
+                padding: 4%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://media3.giphy.com/media/kfRKF0iqA8jyDqq1nH/giphy.gif?cid=6c09b9524e2ln0ceprsf9lphwcwjc7hhd853nycazjw2tetc&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s" alt="gif" id="img">
+    </div>
+    <div class="main">
+        <h2 id="question">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi sapiente quaerat facere atque. Magnam, officiis. Eveniet libero provident assumenda deserunt?</h2>
+        
+        <div class="answers">
+            <div class="answer-block">Lorem ipsum dolor sit amet.</div>
+            <div class="answer-block">Lorem ipsum dolor sit amet consectetur adipisicing.</div>
+        </div>
+    </div>
+    <script>
+        let questions = [
+            {
+                question: "In which year we met?",
+                answers: ["December 2021", "December 2022"],
+                reason: ["Correct :D", "Didn't you know :0"],
+                correct: 0
+            },
+            {
+                question: "Who's the most cutest?",
+                answers: ["Keshav", "Coral"],
+                reason: ["Bhap, mai isme aapka mirror nahi 😤", "The only correct answer ji~"],
+                correct: 1
+            },
+            {
+                question: "What is my favorite color?",
+                answers: ["Pink", "Red"],
+                reason: ["Dissappointed.", "Very smart 😎"],
+                correct: 1
+            },
+            {
+                question: "Who loves you the most?",
+                answers: ["Keshu", "Keshu hee hoga na 😾"],
+                reason: ["This also correct but most = 'sabse zyada' to K hee hoga na 😤", "YESSSSSS :D"],
+                correct: 1
+            },
+            {
+                question: "What is my lucky number?",
+                answers: ["7", "8368690767"],
+                reason: ["Not correct :p", "No explanation :x"],
+                correct: 1
+            },
+            {
+                question: "What is my favorite food?",
+                answers: ["Pizza", "Coral"],
+                reason: ["Achha 2nd option to dekha nahi hoga 😾", "Explain to nahi karna parega :x"],
+                correct: 1
+            },
+            {
+                question: "Will you marry me~",
+                answers: ["Yes", "No"],
+                reason: ["Kab hone waali hai phir~", "Achha 😞"],
+                correct: 0
+            }
+        ];
+        let currentQuestionIndex = 0;
+        let point = 0;
+        const question = document.getElementById('question');
+        const answers = document.querySelectorAll('.answer-block');
+        const updateQuestion = () => {
+            if (currentQuestionIndex < questions.length) {
+                question.textContent = questions[currentQuestionIndex].question;
+                answers.forEach((answer, index) => {
+                    answer.textContent = questions[currentQuestionIndex].answers[index];
+                    answer.onclick = () => {
+                        if (index === questions[currentQuestionIndex].correct) {
+                            point++;
+                        }
+                        alert(questions[currentQuestionIndex].reason[index]);
+                        currentQuestionIndex++;
+                        updateQuestion();
+                    };
+                });
+            } else {
+                question.textContent = `Game Over and sorry I couldnt give you a gift this time :(`;
+                answers.forEach(answer => answer.style.display = 'none');
+                const buttonf = document.createElement('div');
+                let buttonclick = 1
+                buttonf.className = 'answer-block';
+                buttonf.style.cursor = "pointer";
+                if (screen.width <= 425) {
+                    buttonf.style.width = "90%";
+                    buttonf.style.height = "50vw";
+                    buttonf.style.fontSize = "5vw";
+                }
+                else if (screen.width <= 768) {
+                    buttonf.style.width = "90%";
+                    buttonf.style.height = "50vw";
+                    buttonf.style.fontSize = "5vw";
+                } else {
+                    buttonf.style.width = "50%";
+                    buttonf.style.height = "70%";
+                    buttonf.style.fontSize = "2vw";
+                }
+                
+                buttonf.textContent = `Don't click here :x`;
+                buttonf.onclick = () => {
+                    if (buttonclick == 1) {
+                        buttonf.textContent = `Oi! No more clicking!`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick == 2) {
+                        buttonf.textContent = `You clicked ${buttonclick} times, you are so curious :p`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick == 3) {
+                        buttonf.textContent = `Don't click here na :x`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick == 4) {
+                        buttonf.textContent = `So you won't stop clicking? Try once more :p`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick == 5) {
+                        buttonf.textContent = `Oops, I changed my mind, click 5 more times`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick <= 9) {
+                        buttonf.textContent = `Just ${10-buttonclick} more clicks to go!`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick == 10) {
+                        buttonf.textContent = `Haha, I pranked you. Now don't click again, there's nothing here to see :x`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick == 11) {
+                        buttonf.textContent = `Looks like you are not going to stop clicking, try clicking 5 more times now lol`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick <= 15) {
+                        buttonf.textContent = `Just ${16-buttonclick} more clicks to get pranked again!`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick == 16) {
+                        buttonf.textContent = `Ok not a prank. You clicked 16 times (CLICK AGAIN)`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick == 17) {
+                        buttonf.textContent = `HAPPY BIRTHDAY TO YOU! YOU ARE NOT ONLY AT 17 CLICKS BUT ALSO 17 YEARS OLD NOW! I LOVE YOU SO MUCH! And sorry again for no gifts :( (Click 2 more times :x)`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick == 18) {
+                        buttonf.textContent = `HAPPY BIRTHDAY TO YOU! YOU ARE NOT ONLY AT 17 CLICKS BUT ALSO 17 YEARS OLD NOW! I LOVE YOU SO MUCH! And sorry again for no gifts :( (Click 1 more time :p)`;
+                        buttonclick++;
+                    }
+                    else if (buttonclick == 19) {
+                        buttonf.textContent = `Oh looks like you have something to paste from your clipboard now~`;
+                        navigator.clipboard.writeText("https://discord.gg/dx28gFSHBV")
+                    }
+                    
+                };
+                document.querySelector('.answers').appendChild(buttonf);
+
+            }
+        };
+        updateQuestion();
+        
+    </script>
+</body>
+</html>
+
+
+
+
